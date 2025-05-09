@@ -92,4 +92,4 @@ HELLO WORLD
 ```
 
 # More Examples In Other Branches
-- [data_items](https://github.com/ericstiles/cobol_basics/tree/data_items)
+- [data_items in 1_data_items folder](https://github.com/ericstiles/cobol_basics/tree/data_items/1_data_items)
