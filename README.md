@@ -1,5 +1,9 @@
+This repository, created by a very new user (me :-) still learning), contains a simple example of how to call a COBOL program from Python using GnuCOBOL on MacOS.
+
 # Steps
 ## Prework
+
+Install Homebrew, set path and verify.
 
 ```
 $ brew install gnucobol
@@ -18,16 +22,17 @@ Packaged  Jul 28 2023 17:02:56 UTC
 C version "Apple LLVM 15.0.0 (clang-1500.0.40.1)" 
 ```
 
-
+Additional step that sets a path for the library to be found by the linker. Unsure if this is needed. 
+[https://stackoverflow.com/questions/1231950/how-to-set-dyld_library_path-in-mac-os-x]
 
 ```
 export DYLD_LIBRARY_PATH=./:$DYLD_LIBRARY_PATH
 ```
 
-
-## Cobol
+## Simple Cobol Program
 
 Create file: `hw.pgm` with the following content:
+
 ```
 IDENTIFICATION DIVISION.
 PROGRAM-ID. IDSAMPLE.
@@ -35,26 +40,23 @@ ENVIRONMENT DIVISION.
 PROCEDURE DIVISION.
     DISPLAY 'HELLO WORLD'.
     STOP RUN.
-
 ```
 
 Run the following commands in the terminal to compile:
+
 ```
 $ cobc -x -o hw.dylib hw.pgm
-
-
 ```
 
-Run the following commands in the terminal to see information:
+Run the following commands in the terminal to see information.
+
 ```
 $ nm -gU hw.dylib
-
-#output
 00000000000006d0 T _IDSAMPLE
 ```
 
+See more information. Otool is a command line tool for displaying information about Mach-O files.
 
-See more information:
 ```
 $ otool -L hw.dylib
 
@@ -64,9 +66,10 @@ hw.dylib:
 
 ```
 
-
 ## Python
+
 Create file: `hw.py` with the following content:
+
 ```python
 import ctypes
 
@@ -75,21 +78,15 @@ lib = ctypes.CDLL("./hw.dylib")
 
 lib.cob_init()
 
-
 # Call the main function (if defined)
 lib.IDSAMPLE()
 
-
 lib.cob_stop_run()
-
 ```
 
 Run the following commands in the terminal to see information:
 
 ```
 $ python3 hw.py
-
-#output
 HELLO WORLD
 ```
-
