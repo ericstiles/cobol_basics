@@ -31,7 +31,7 @@ export DYLD_LIBRARY_PATH=./:$DYLD_LIBRARY_PATH
 
 ## Simple Cobol Program
 
-Create file: `hw.pgm` with the following content:
+Create file: `hw.pgm` with the following content.
 
 ```
 IDENTIFICATION DIVISION.
@@ -68,7 +68,7 @@ hw.dylib:
 
 ## Python
 
-Create file: `hw.py` with the following content:
+Create file: `hw.py` with the following content.
 
 ```python
 import ctypes
@@ -84,7 +84,7 @@ lib.IDSAMPLE()
 lib.cob_stop_run()
 ```
 
-Run the following commands in the terminal to see information:
+Run the following commands in the terminal to see information.
 
 ```
 $ python3 hw.py
