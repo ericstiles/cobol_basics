@@ -5,7 +5,7 @@
 # Steps
 
 ```
-$ python ../runner.py ./di.dylib --function main
+$ ../runner.py ./di.dylib --function main
 Enter Employee Name: 
 eric
 Enter Employee Age: 
